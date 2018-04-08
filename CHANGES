@@ -1,3 +1,7 @@
+2015-09-22 pjacklam 0.40
+  * Sync with blead.
+  * Update author information in Makefile.PL.
+
 2015-09-14 pjacklam 0.39
   * bignum tests: use eval-block instead of eval-string
   * bignum tests: use eval block to load Math::BigInt::Lite

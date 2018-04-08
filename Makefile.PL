@@ -1,3 +1,4 @@
+#!perl
 
 use strict;
 require 5.006;
@@ -19,7 +20,7 @@ build_requires	'Test::More'	=> 0.62;
 
 license		'perl';
 
-author		'Tels <nospam-abuse@bloodgate.com>';
+author		'Peter John Acklam <pjacklam@gmail.com>';
 
 # install this over the version in the Perl core
 install_as_core;
