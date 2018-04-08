@@ -10,5 +10,22 @@ BEGIN {
     use_ok('bigrat');
 };
 
-diag("Testing bignum $bignum::VERSION");
-diag("==> Perl $], $^X");
+my @mods = ('bignum',
+            'bigint',
+            'bigrat',
+            'Math::BigInt',
+            'Math::BigRat',
+            'Math::BigInt::Lite',
+            );
+
+diag("");
+diag("Testing with Perl $], $^X");
+diag("");
+diag(sprintf("%12s %s\n", 'Version', 'Module'));
+diag(sprintf("%12s %s\n", '-------', '------'));
+for my $mod (@mods) {
+    eval "require $mod";
+    my $ver = $@ ? '-' : $mod -> VERSION();
+    diag(sprintf("%12s %s\n", $ver, $mod));
+}
+diag("");

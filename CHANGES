@@ -1,3 +1,9 @@
+2015-09-14 pjacklam 0.39
+  * bignum tests: use eval-block instead of eval-string
+  * bignum tests: use eval block to load Math::BigInt::Lite
+  * Set version number in all .pm files to 0.39.
+  * Display information about module versions in 01load.t.
+
 2015-08-28 pjacklam 0.38
   * Synchronise with blead perl.
   * Minimum required Math-BigInt is v1.88.
