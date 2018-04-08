@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use ExtUtils::MakeMaker;
 
-WriteMakefile
+my %WriteMakefileArgs =
   (
    'NAME'               => 'bignum',
    'VERSION_FROM'       => 'lib/bignum.pm',
@@ -17,10 +17,16 @@ WriteMakefile
                             'Math::BigRat'        => 0.12,
                             #'Math::BigInt::Lite'  => 0.09,      # optional
                            },
-   'INSTALLDIRS'        => 'perl',      # install over the core version
    'LICENSE'            => 'perl_5',
    'LIBS'               => [''],        # e.g., '-lm'
    'DEFINE'             => '',          # e.g., '-DHAVE_SOMETHING'
    'INC'                => '',          # e.g., '-I/usr/include/other'
    'SIGN'               => 1,
   );
+
+# Install over the core version? (Cf. CPAN RT #119199 and #119225.)
+
+$WriteMakefileArgs{INSTALLDIRS} = 'perl'
+  if $] >= 5.008 && $] < 5.012;
+
+WriteMakefile(%WriteMakefileArgs);
