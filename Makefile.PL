@@ -1,7 +1,9 @@
 #!perl
 
-use strict;
 require 5.006;
+
+use strict;
+use warnings;
 
 # Load the Module::Install bundled in ./inc/
 use inc::Module::Install;
@@ -13,7 +15,7 @@ name		'bignum';
 all_from	'lib/bignum.pm';
 
 requires	'perl'		=> "5.006";
-requires	'Math::BigInt'	=> 1.992;
+requires	'Math::BigInt'	=> 1.999712;
 requires	'Math::BigRat'	=> 0.12;
 
 build_requires	'Test::More'	=> 0.62;
