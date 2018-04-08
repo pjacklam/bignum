@@ -1,3 +1,7 @@
+2016-12-11 pjacklam 0.46
+
+ * Fix Makefile.PL so that this module installs over the core version.
+
 2016-12-03 pjacklam 0.45
 
  * Use ExtUtils::MakeMaker rather than Module::Install in Makefile.PL

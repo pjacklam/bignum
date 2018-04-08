@@ -15,7 +15,9 @@ WriteMakefile
                             'Test::More'          => 0.47,
                             'Math::BigInt'        => 1.999718,
                             'Math::BigRat'        => 0.12,
+                            #'Math::BigInt::Lite'  => 0.09,      # optional
                            },
+   'INSTALLDIRS'        => 'perl',      # install over the core version
    'LICENSE'            => 'perl_5',
    'LIBS'               => [''],        # e.g., '-lm'
    'DEFINE'             => '',          # e.g., '-DHAVE_SOMETHING'
