@@ -1,3 +1,6 @@
+2016-07-09 pjacklam 0.43
+  * Replace function calls with method calls.
+
 2016-01-05 pjacklam 0.42
   * "use strict" and "use warnings" everywhere.
   * Reformat some if the code according to the "perlstyle" man page. It makes
