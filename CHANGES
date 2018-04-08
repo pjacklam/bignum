@@ -1,3 +1,10 @@
+2015-09-25 pjacklam 0.41
+  * hex() and oct() now have the same semantics as the corresponding core
+    functions. E.g., hex("cat") returns 202 and a warning "Illegal hexadecimal
+    digit 't' ignored at ..." rather than NaN.
+  * Added test files auth-bigint-hex.t and auth-bigint-oct.t.
+  * Minimum required version of the Math-BigInt distro is now 1.992.
+
 2015-09-22 pjacklam 0.40
   * Sync with blead.
   * Update author information in Makefile.PL.

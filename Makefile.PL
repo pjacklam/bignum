@@ -13,7 +13,7 @@ name		'bignum';
 all_from	'lib/bignum.pm';
 
 requires	'perl'		=> "5.006";
-requires	'Math::BigInt'	=> 1.88;
+requires	'Math::BigInt'	=> 1.992;
 requires	'Math::BigRat'	=> 0.12;
 
 build_requires	'Test::More'	=> 0.62;
