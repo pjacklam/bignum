@@ -18,7 +18,7 @@ requires	'perl'		=> "5.006";
 requires	'Math::BigInt'	=> 1.999712;
 requires	'Math::BigRat'	=> 0.12;
 
-build_requires	'Test::More'	=> 0.62;
+build_requires	'Test::More'	=> 0.47;
 
 license		'perl';
 

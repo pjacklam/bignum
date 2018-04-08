@@ -1,3 +1,11 @@
+2016-11-15 pjacklam 0.44
+
+  * Update bundled Module::Install from version 1.16 to version 1.17.
+
+  * Replace function calls with method calls.
+
+  * Include patch for CPAN RT #116506.
+
 2016-07-09 pjacklam 0.43
   * Replace function calls with method calls.
 
