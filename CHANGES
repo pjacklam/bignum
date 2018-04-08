@@ -1,3 +1,8 @@
+2014-04-03 pjacklam 0.36
+  * Synchronise with blead perl.
+  * Added new '00sig.t', '01load.t', '02pod.t', and '03pod_cov.t'.
+  * Removed old 'pod.t' and 'podcov.t'
+
 2012-09-11 rafl 0.30 302 tests
   * Synchronise with blead perl.
 

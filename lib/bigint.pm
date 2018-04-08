@@ -1,7 +1,7 @@
 package bigint;
 use 5.006;
 
-$VERSION = '0.32';
+$VERSION = '0.36';
 use Exporter;
 @ISA		= qw( Exporter );
 @EXPORT_OK	= qw( PI e bpi bexp hex oct );
@@ -302,6 +302,8 @@ sub bexp ($$) { my $x = Math::BigInt->new($_[0]); $x->bexp($_[1]); }
 
 __END__
 
+=pod
+
 =head1 NAME
 
 bigint - Transparent BigInteger support for Perl
@@ -328,8 +330,8 @@ bigint - Transparent BigInteger support for Perl
 
 =head1 DESCRIPTION
 
-All operators (including basic math operations) are overloaded. Integer
-constants are created as proper BigInts.
+All operators (including basic math operations) except the range operator C<..>
+are overloaded. Integer constants are created as proper BigInts.
 
 Floating point constants are truncated to integer. All parts and results of
 expressions are also truncated.
@@ -365,7 +367,7 @@ In practice this makes seldom a difference as B<parts and results> of
 expressions will be truncated anyway, but this can, for instance, affect the
 return value of subroutines:
 
-    sub three_integer { use integer; return 3.2; }
+    sub three_integer { use integer; return 3.2; } 
     sub three_bigint { use bigint; return 3.2; }
 
     print three_integer(), " ", three_bigint(),"\n";	# prints "3.2 3"
@@ -523,7 +525,7 @@ B<both> the original and the copy being destroyed:
 	$x = 9; $y = $x;
 	print $x->bmul(2), " ", $y,"\n";	# prints 18 18
 
-Using methods that do not modify, but testthe contents works:
+Using methods that do not modify, but test that the contents works:
 
 	$x = 9; $y = $x;
 	$z = 9 if $x->is_zero();		# works fine
@@ -608,6 +610,20 @@ This method only works on Perl v5.9.4 or later.
 
 =over 2
 
+=item ranges
+
+Perl does not allow overloading of ranges, so you can neither safely use
+ranges with bigint endpoints, nor is the iterator variable a bigint.
+
+	use 5.010;
+	for my $i (12..13) {
+	  for my $j (20..21) {
+	    say $i ** $j;  # produces a floating-point number,
+	                   # not a big integer
+	  }
+	}
+
+
 =item in_effect()
 
 This method only works on Perl v5.9.4 or later.
@@ -665,6 +681,65 @@ to compare them to the results under -Mbignum or -Mbigrat:
 	perl -Mbigint=a,65 -le 'print 2 ** 0.2'
 	perl -Mbignum=a,65,l,GMP -le 'print 7 ** 7777'
 
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-bignum at rt.cpan.org>, or through the web interface at
+L<https://rt.cpan.org/Ticket/Create.html?Queue=bignum>
+(requires login).
+We will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc bigint
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=bignum>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/bignum>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/dist/bignum>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/bignum/>
+
+=item * CPAN Testers Matrix
+
+L<http://matrix.cpantesters.org/?dist=bignum>
+
+=item * The Bignum mailing list
+
+=over 4
+
+=item * Post to mailing list
+
+C<bignum at lists.scsys.co.uk>
+
+=item * View mailing list
+
+L<http://lists.scsys.co.uk/pipermail/bignum/>
+
+=item * Subscribe/Unsubscribe
+
+L<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/bignum>
+
+=back
+
+=back
+
 =head1 LICENSE
 
 This program is free software; you may redistribute it and/or modify it under
@@ -672,11 +747,9 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-Especially L<bigrat> as in C<perl -Mbigrat -le 'print 1/3+1/4'> and
-L<bignum> as in C<perl -Mbignum -le 'print sqrt(2)'>.
-
-L<Math::BigInt>, L<Math::BigRat> and L<Math::Big> as well
-as L<Math::BigInt::BitVect>, L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
+L<bignum>, L<bigrat>, L<Math::BigInt>, L<Math::BigFloat>, and L<Math::BigRat>
+as well as the backends L<Math::BigInt::FastCalc>, L<Math::BigInt::GMP>, and
+L<Math::BigInt::Pari>.
 
 =head1 AUTHORS
 

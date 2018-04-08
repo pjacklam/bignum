@@ -1,10 +1,10 @@
 package bignum;
 use 5.006;
 
-$VERSION = '0.32';
+$VERSION = '0.37';
 use Exporter;
 @ISA 		= qw( bigint );
-@EXPORT_OK	= qw( PI e bexp bpi hex oct );
+@EXPORT_OK	= qw( PI e bexp bpi hex oct ); 
 @EXPORT 	= qw( inf NaN ); 
 
 use strict;
@@ -215,6 +215,8 @@ sub bexp ($$) { my $x = Math::BigFloat->new($_[0]); $x->bexp($_[1]); }
 1;
 
 __END__
+
+=pod
 
 =head1 NAME
 
@@ -551,7 +553,7 @@ If you want the code to die instead of falling back, use C<only> instead:
 
 The numbers are stored as objects, and their internals might change at anytime,
 especially between math operations. The objects also might belong to different
-classes, like Math::BigInt, or Math::BigFLoat. Mixing them together, even
+classes, like Math::BigInt, or Math::BigFloat. Mixing them together, even
 with normal scalars is not extraordinary, but normal and expected.
 
 You should not depend on the internal format, all accesses must go through
@@ -631,6 +633,65 @@ Some cool command line examples to impress the Python crowd ;)
 	perl -Mbignum=a,65 -le 'print 2 ** 0.2'
 	perl -Mbignum=a,65,l,GMP -le 'print 7 ** 7777'
 
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-bignum at rt.cpan.org>, or through the web interface at
+L<https://rt.cpan.org/Ticket/Create.html?Queue=bignum>
+(requires login).
+We will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc bignum
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=bignum>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/bignum>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/dist/bignum>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/bignum/>
+
+=item * CPAN Testers Matrix
+
+L<http://matrix.cpantesters.org/?dist=bignum>
+
+=item * The Bignum mailing list
+
+=over 4
+
+=item * Post to mailing list
+
+C<bignum at lists.scsys.co.uk>
+
+=item * View mailing list
+
+L<http://lists.scsys.co.uk/pipermail/bignum/>
+
+=item * Subscribe/Unsubscribe
+
+L<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/bignum>
+
+=back
+
+=back
+
 =head1 LICENSE
 
 This program is free software; you may redistribute it and/or modify it under
@@ -638,10 +699,9 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-Especially L<bigrat> as in C<perl -Mbigrat -le 'print 1/3+1/4'>.
-
-L<Math::BigFloat>, L<Math::BigInt>, L<Math::BigRat> and L<Math::Big> as well
-as L<Math::BigInt::BitVect>, L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
+L<bigint>, L<bigrat>, L<Math::BigInt>, L<Math::BigFloat>, and L<Math::BigRat>
+as well as the backends L<Math::BigInt::FastCalc>, L<Math::BigInt::GMP>, and
+L<Math::BigInt::Pari>.
 
 =head1 AUTHORS
 
