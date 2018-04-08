@@ -1,7 +1,7 @@
 package bignum;
 use 5.006;
 
-$VERSION = '0.37';
+$VERSION = '0.38';
 use Exporter;
 @ISA 		= qw( bigint );
 @EXPORT_OK	= qw( PI e bexp bpi hex oct ); 
@@ -155,8 +155,7 @@ sub import
     # see if we can find Math::BigInt::Lite
     if (!defined $a && !defined $p)		# rounding won't work to well
       {
-      eval 'require Math::BigInt::Lite;';
-      if ($@ eq '')
+      if (eval { require Math::BigInt::Lite; 1 })
         {
         @import = ( );				# :constant in Lite, not MBI
         Math::BigInt::Lite->import( ':constant' );
@@ -215,8 +214,6 @@ sub bexp ($$) { my $x = Math::BigFloat->new($_[0]); $x->bexp($_[1]); }
 1;
 
 __END__
-
-=pod
 
 =head1 NAME
 
@@ -633,65 +630,6 @@ Some cool command line examples to impress the Python crowd ;)
 	perl -Mbignum=a,65 -le 'print 2 ** 0.2'
 	perl -Mbignum=a,65,l,GMP -le 'print 7 ** 7777'
 
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-bignum at rt.cpan.org>, or through the web interface at
-L<https://rt.cpan.org/Ticket/Create.html?Queue=bignum>
-(requires login).
-We will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc bignum
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=bignum>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/bignum>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/dist/bignum>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/bignum/>
-
-=item * CPAN Testers Matrix
-
-L<http://matrix.cpantesters.org/?dist=bignum>
-
-=item * The Bignum mailing list
-
-=over 4
-
-=item * Post to mailing list
-
-C<bignum at lists.scsys.co.uk>
-
-=item * View mailing list
-
-L<http://lists.scsys.co.uk/pipermail/bignum/>
-
-=item * Subscribe/Unsubscribe
-
-L<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/bignum>
-
-=back
-
-=back
-
 =head1 LICENSE
 
 This program is free software; you may redistribute it and/or modify it under
@@ -699,9 +637,10 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<bigint>, L<bigrat>, L<Math::BigInt>, L<Math::BigFloat>, and L<Math::BigRat>
-as well as the backends L<Math::BigInt::FastCalc>, L<Math::BigInt::GMP>, and
-L<Math::BigInt::Pari>.
+Especially L<bigrat> as in C<perl -Mbigrat -le 'print 1/3+1/4'>.
+
+L<Math::BigFloat>, L<Math::BigInt>, L<Math::BigRat> and L<Math::Big> as well
+as L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
 
 =head1 AUTHORS
 

@@ -1,4 +1,9 @@
-2014-04-03 pjacklam 0.36
+2015-08-28 pjacklam 0.38
+  * Synchronise with blead perl.
+  * Minimum required Math-BigInt is v1.88.
+  * Update bundled Module::Install from v1.08 to v1.16.
+
+2014-04-03 pjacklam 0.37
   * Synchronise with blead perl.
   * Added new '00sig.t', '01load.t', '02pod.t', and '03pod_cov.t'.
   * Removed old 'pod.t' and 'podcov.t'

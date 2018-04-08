@@ -1,7 +1,7 @@
 package bigrat;
 use 5.006;
 
-$VERSION = '0.36';
+$VERSION = '0.37';
 require Exporter;
 @ISA		= qw( bigint );
 @EXPORT_OK 	= qw( PI e bpi bexp hex oct );
@@ -148,8 +148,7 @@ sub import
     # see if we can find Math::BigInt::Lite
     if (!defined $a && !defined $p)             # rounding won't work to well
       {
-      eval 'require Math::BigInt::Lite;';
-      if ($@ eq '')
+      if (eval { require Math::BigInt::Lite; 1 })
         {
         @import = ( );                          # :constant in Lite, not MBI
         Math::BigInt::Lite->import( ':constant' );
@@ -209,8 +208,6 @@ sub bexp ($$)
 1;
 
 __END__
-
-=pod
 
 =head1 NAME
 
@@ -520,65 +517,6 @@ Compare this to:
 	perl -Mbigrat -le 'print 12->is_odd()';
 	perl -Mbignum=l,GMP -le 'print 7 ** 7777'
 
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-bignum at rt.cpan.org>, or through the web interface at
-L<https://rt.cpan.org/Ticket/Create.html?Queue=bignum>
-(requires login).
-We will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc bigrat
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=bignum>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/bignum>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/dist/bignum>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/bignum/>
-
-=item * CPAN Testers Matrix
-
-L<http://matrix.cpantesters.org/?dist=bignum>
-
-=item * The Bignum mailing list
-
-=over 4
-
-=item * Post to mailing list
-
-C<bignum at lists.scsys.co.uk>
-
-=item * View mailing list
-
-L<http://lists.scsys.co.uk/pipermail/bignum/>
-
-=item * Subscribe/Unsubscribe
-
-L<http://lists.scsys.co.uk/cgi-bin/mailman/listinfo/bignum>
-
-=back
-
-=back
-
 =head1 LICENSE
 
 This program is free software; you may redistribute it and/or modify it under
@@ -586,9 +524,10 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<bignum>, L<bigint>, L<Math::BigInt>, L<Math::BigFloat>, and L<Math::BigRat>
-as well as the backends L<Math::BigInt::FastCalc>, L<Math::BigInt::GMP>, and
-L<Math::BigInt::Pari>.
+Especially L<bignum>.
+
+L<Math::BigFloat>, L<Math::BigInt>, L<Math::BigRat> and L<Math::Big> as well
+as L<Math::BigInt::Pari> and  L<Math::BigInt::GMP>.
 
 =head1 AUTHORS
 
