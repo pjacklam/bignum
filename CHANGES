@@ -1,5 +1,7 @@
 2018-02-03 v0.49 pjacklam
 
+ * Fix t/option_l.t to match changes in Math::BigInt.
+
  * Improve specification of required modules in Makefile.PL.
 
  * Fix typo in CHANGES file.
