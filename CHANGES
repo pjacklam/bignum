@@ -1,5 +1,7 @@
 2018-03-30 v0.49 pjacklam
 
+ * Convert t/03podcov.t -> t/release-pod-coverage.t.
+
  * Add test file t/release-test-version.t.
 
  * Convert t/02pod.t -> t/release-pod.t.
