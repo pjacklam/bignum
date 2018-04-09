@@ -1,5 +1,7 @@
 0.50 Not Released
 
+ * Add test file t/release-portability.t.
+
  * Use the default MANIFEST.SKIP file from ExtUtils::Manifest.
 
  * Format CHANGES according to CPAN::Changes::Spec. Add test file
