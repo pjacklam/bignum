@@ -65,4 +65,4 @@
 #!end included /usr/share/perl5/5.26/ExtUtils/MANIFEST.SKIP
 
 # Avoid distribution-specific stuff.
-/bignum-[0-9]
+^bignum-[0-9]

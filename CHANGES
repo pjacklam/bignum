@@ -1,21 +1,19 @@
-0.50 Not Released
-
- * Add test file t/release-portability.t.
-
- * Use the default MANIFEST.SKIP file from ExtUtils::Manifest.
-
- * Format CHANGES according to CPAN::Changes::Spec. Add test file
-   t/release-cpan-changes.t.
-
- * Convert t/03podcov.t -> t/release-pod-coverage.t.
-
- * Add test file t/release-test-version.t.
-
- * Convert t/02pod.t -> t/release-pod.t.
-
- * Increment version number.
+0.50 2018-04-17
 
  * Fix t/option_l.t to match changes in Math::BigInt.
+
+ * The tests now require Test::More version 0.88 or newer.
+
+ * New MANIFEST.SKIP file based on the template in the ExtUtils-Manifest
+   distribution.
+
+ * Format CHANGES according to CPAN::Changes::Spec.
+
+ * Add test files t/release-test-version.t, t/release-portability.t, and
+   t/release-cpan-changes.t.
+
+ * Convert test file t/02pod.t to t/release-pod.t and t/03podcov.t to
+   t/release-pod-coverage.t.
 
 0.49 2018-02-03 pjacklam
 
