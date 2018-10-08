@@ -1,5 +1,7 @@
 0.51
 
+ * Better way to catch warnings (CPAN RT #126900).
+
  * Better Makefile.PL.
 
 0.50 2018-04-17
