@@ -15,7 +15,7 @@ my %WriteMakefileArgs =
    # run the distribution.
 
    'CONFIGURE_REQUIRES' => {
-                            'ExtUtils::MakeMaker' => 6.64,
+                            'ExtUtils::MakeMaker' => 6.58,
                            },
 
    # A hash of modules that are needed to build the module but not run it.
