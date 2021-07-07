@@ -1,3 +1,10 @@
+0.52 Not Released
+
+ * Updated BUGS and SUPPORT sections in POD (remove dead links, add reference
+   to GitHub repo, update the author's e-mail address, etc.).
+
+ * Make tests match recent changes to the Math-BigInt distribution.
+
 0.51 2018-10-08
 
  * Better way to catch warnings (CPAN RT #126900).

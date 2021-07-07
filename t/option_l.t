@@ -42,7 +42,7 @@ $rc = eval { bignum->import( "foo" => "bar" ) };
 like($@, qr/^Unknown option foo/i, 'died'); # should die
 
 $rc = eval { bignum->import( "only" => "bar" ) };
-like($@, qr/fallback disallowed/i, 'died'); # should die
+like($@, qr/fallback.*disallowed/i, 'died'); # should die
 
 # test that options are only lowercase (don't see a reason why allow UPPER)
 
