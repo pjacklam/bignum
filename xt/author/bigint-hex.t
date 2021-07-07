@@ -1,13 +1,5 @@
 #!perl
 
-BEGIN {
-    unless ($ENV{AUTHOR_TESTING}) {
-        require Test::More;
-        Test::More::plan(skip_all =>
-                         'these tests are for testing by the author');
-    }
-}
-
 use strict;
 use warnings;
 
@@ -26,7 +18,7 @@ for my $k (0 .. @$elements) {
     for my $variation (variations($elements, $k)) {
         my $str = join "", @$variation;
         next if $seen -> {$str}++;
-        print qq|#\n# oct("$str")\n#\n|;
+        print qq|#\n# hex("$str")\n#\n|;
 
         my $i;
         my @warnings;
@@ -37,11 +29,11 @@ for my $k (0 .. @$elements) {
         };
 
         $i = 0;
-        my $want_val  = CORE::oct("$str");
+        my $want_val  = CORE::hex("$str");
         my $want_warn = $warnings[$i];
 
         $i = 1;
-        my $got_val   = bigint::oct("$str");
+        my $got_val   = bigint::hex("$str");
         my $got_warn  = $warnings[$i];
 
         is($got_val,  $want_val,  qq|hex("$str") (output)|);
