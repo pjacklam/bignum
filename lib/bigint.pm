@@ -122,7 +122,7 @@ sub _hex_core {
     # Strip off, clean, and parse as much as we can from the beginning.
 
     my $x;
-    if ($str =~ s/ ^ (0?[xX])? ( [0-9a-fA-F]* ( _ [0-9a-fA-F]+ )* ) //x) {
+    if ($str =~ s/ ^ ( 0? [xX] )? ( [0-9a-fA-F]* ( _ [0-9a-fA-F]+ )* ) //x) {
         my $chrs = $2;
         $chrs =~ tr/_//d;
         $chrs = '0' unless CORE::length $chrs;
@@ -162,7 +162,7 @@ sub _oct_core {
 
         # Strip off, clean, and parse as much as we can from the beginning.
 
-        if ($str =~ s/ ^ (0?[bB])? ( [01]* ( _ [01]+ )* ) //x) {
+        if ($str =~ s/ ^ ( 0? [bB] )? ( [01]* ( _ [01]+ )* ) //x) {
             my $chrs = $2;
             $chrs =~ tr/_//d;
             $chrs = '0' unless CORE::length $chrs;
@@ -183,21 +183,20 @@ sub _oct_core {
     # Octal input. Strip off, clean, and parse as much as we can from the
     # beginning.
 
-    if ($str =~ s/ ^ ( [0-7]* ( _ [0-7]+ )* ) //x) {
-        my $chrs = $1;
+    if ($str =~ s/ ^ ( 0? [oO] )? ( [0-7]* ( _ [0-7]+ )* ) //x) {
+        my $chrs = $2;
         $chrs =~ tr/_//d;
         $chrs = '0' unless CORE::length $chrs;
         $x = Math::BigInt -> from_oct($chrs);
     }
 
-    # Warn about trailing garbage. CORE::oct() only warns about 8 and 9.
+    # Warn about trailing garbage. CORE::oct() only warns about 8 and 9, but it
+    # is more helpful to warn about all invalid digits.
 
     if (CORE::length($str)) {
-        my $chr = substr($str, 0, 1);
-        if ($chr eq '8' || $chr eq '9') {
-            require Carp;
-            Carp::carp(sprintf("Illegal octal digit '%s' ignored", $chr));
-        }
+        require Carp;
+        Carp::carp(sprintf("Illegal octal digit '%s' ignored",
+                           substr($str, 0, 1)));
     }
 
     return $x;
