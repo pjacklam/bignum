@@ -22,13 +22,13 @@ $rc = eval { bignum->import( "l" => "foo" ) };
 is($@, '',                     # shouldn't die
    qq|eval { bignum->import( "l" => "foo" ) }|);
 is(scalar(@WARNINGS), 1, 'one warning');
-like($WARNINGS[0], qr/fallback to Math::/, 'got fallback');
+like($WARNINGS[0], qr/using fallback/, 'using fallback');
 
 $rc = eval { bignum->import( "lib" => "foo" ) };
 is($@, '',                     # ditto
    qq|eval { bignum->import( "lib" => "foo" ) }|);
 is(scalar @WARNINGS, 2, 'two warnings');
-like($WARNINGS[1], qr/fallback to Math::/, 'got fallback');
+like($WARNINGS[1], qr/using fallback/, 'using fallback');
 
 $rc = eval { bignum->import( "try" => "foo" ) };
 is($@, '',                     # shouldn't die
